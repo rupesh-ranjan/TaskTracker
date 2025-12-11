@@ -5,6 +5,7 @@ const initialState = {
     allIds: [],
     filter: "all",
     searchQuery: "",
+    categoryFilter: "all",
 };
 
 const tasksSlice = createSlice({
@@ -17,16 +18,17 @@ const tasksSlice = createSlice({
                 state.byId[task.id] = task;
                 state.allIds.push(task.id);
             },
-            prepare({ title, priority = "low" }) {
+            prepare({ title, priority = "low", category = "personal" }) {
                 return {
                     payload: {
                         id: nanoid(),
                         title,
                         completed: false,
-                        priority, // 'low' | 'medium' | 'high' | 'urgent'
+                        priority,
+                        category,
                         createdAt: new Date().toISOString(),
                         updatedAt: null,
-                        categories: [],
+                        categories: [category],
                     },
                 };
             },
@@ -64,6 +66,20 @@ const tasksSlice = createSlice({
             state.searchQuery = action.payload;
         },
 
+        setCategoryFilter(state, action) {
+            state.categoryFilter = action.payload;
+        },
+
+        updateCategory(state, action) {
+            const { id, category } = action.payload;
+            const t = state.byId[id];
+            if (t) {
+                t.category = category;
+                t.categories = [category];
+                t.updatedAt = new Date().toISOString();
+            }
+        },
+
         loadTasks(state, action) {
             return action.payload;
         },
@@ -78,5 +94,7 @@ export const {
     setFilter,
     loadTasks,
     setSearch,
+    updateCategory,
+    setCategoryFilter,
 } = tasksSlice.actions;
 export default tasksSlice.reducer;

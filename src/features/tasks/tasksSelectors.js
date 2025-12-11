@@ -1,5 +1,11 @@
 export function selectVisibleTasks(state) {
-    const { byId, allIds, filter = "all", searchQuery = "" } = state.tasks;
+    const {
+        byId,
+        allIds,
+        filter = "all",
+        searchQuery = "",
+        categoryFilter = "all",
+    } = state.tasks;
 
     const q = (searchQuery || "").trim().toLowerCase();
 
@@ -9,6 +15,13 @@ export function selectVisibleTasks(state) {
         tasks = tasks.filter((t) => !t.completed);
     } else if (filter === "completed") {
         tasks = tasks.filter((t) => t.completed);
+    }
+
+    if (categoryFilter && categoryFilter !== "all") {
+        tasks = tasks.filter(
+            (t) =>
+                (t.category || t.categories?.[0] || "inbox") === categoryFilter
+        );
     }
 
     if (q.length > 0) {

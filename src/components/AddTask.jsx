@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../features/tasks/tasksSlice.js";
-import { PRIORITIES } from "../constants/index.js";
+import { PRIORITIES, CATEGORIES } from "../constants/index.js";
 
 export default function AddTask() {
     const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [priority, setPriority] = useState("low");
+    const [category, setCategory] = useState("personal");
 
     const handleAdd = () => {
         if (!title.trim()) return;
-        dispatch(addTask({ title, priority }));
+        dispatch(addTask({ title: title.trim(), priority, category }));
         setTitle("");
     };
 
@@ -29,10 +30,24 @@ export default function AddTask() {
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
                 className="border px-2 py-2 rounded bg-white"
+                aria-label="Select priority"
             >
                 {PRIORITIES.map((p) => (
                     <option key={p.value} value={p.value}>
                         {p.label}
+                    </option>
+                ))}
+            </select>
+
+            <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="border px-2 py-2 rounded bg-white"
+                aria-label="Select category"
+            >
+                {CATEGORIES.map((c) => (
+                    <option key={c.value} value={c.value}>
+                        {c.label}
                     </option>
                 ))}
             </select>

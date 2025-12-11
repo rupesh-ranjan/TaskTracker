@@ -3,6 +3,7 @@ import AddTask from "./components/AddTask.jsx";
 import TaskList from "./components/TaskList.jsx";
 import FilterBar from "./components/FilterBar.jsx";
 import SearchBar from "./components/SearchBar.jsx";
+import CategoryFilter from "./components/CategoryFilter.jsx";
 
 export default function App() {
     return (
@@ -11,6 +12,7 @@ export default function App() {
             <AddTask />
             <SearchBar />
             <FilterBar />
+            <CategoryFilter />
             <TaskList />
         </div>
     );
