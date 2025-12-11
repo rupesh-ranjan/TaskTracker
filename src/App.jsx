@@ -5,6 +5,7 @@ import FilterBar from "./components/FilterBar.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import CategoryFilter from "./components/CategoryFilter.jsx";
 import AutoSave from "./components/AutoSave.jsx";
+import "./App.css";
 
 export default function App() {
     return (

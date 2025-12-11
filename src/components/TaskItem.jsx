@@ -21,7 +21,7 @@ export default function TaskItem({ task }) {
 
     return (
         <>
-            <li className="flex items-center justify-between bg-white shadow px-4 py-2 rounded">
+            <li className="flex items-center justify-between card shadow px-4 py-2 rounded">
                 <div className="flex items-center gap-3">
                     <input
                         type="checkbox"
@@ -50,7 +50,7 @@ export default function TaskItem({ task }) {
                             </span>
                         </div>
 
-                        <div className="text-xs text-gray-500 mt-0.5">
+                        <div className="text-xs muted mt-0.5">
                             {new Date(task.createdAt).toLocaleString()}
                         </div>
                     </div>

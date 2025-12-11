@@ -20,7 +20,7 @@ export default function AddTask() {
             <input
                 type="text"
                 placeholder="Enter task..."
-                className="border px-3 py-2 rounded w-full"
+                className="input"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleAdd()}
@@ -29,7 +29,7 @@ export default function AddTask() {
             <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value)}
-                className="border px-2 py-2 rounded bg-white"
+                className="select"
                 aria-label="Select priority"
             >
                 {PRIORITIES.map((p) => (
@@ -42,7 +42,7 @@ export default function AddTask() {
             <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="border px-2 py-2 rounded bg-white"
+                className="select"
                 aria-label="Select category"
             >
                 {CATEGORIES.map((c) => (
@@ -52,10 +52,7 @@ export default function AddTask() {
                 ))}
             </select>
 
-            <button
-                onClick={handleAdd}
-                className="bg-blue-600 text-white px-4 py-2 rounded"
-            >
+            <button onClick={handleAdd} className="btn-primary">
                 Add
             </button>
         </div>

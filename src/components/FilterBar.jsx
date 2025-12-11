@@ -15,9 +15,7 @@ export default function FilterBar() {
                         key={f.value}
                         onClick={() => dispatch(setFilter(f.value))}
                         className={`px-3 py-1 rounded text-sm ${
-                            active
-                                ? "bg-blue-600 text-white"
-                                : "bg-white border text-gray-700"
+                            active ? "bg-blue-600 text-white" : "btn-outline"
                         }`}
                         aria-pressed={active}
                     >

@@ -16,7 +16,7 @@ export default function SearchBar() {
                 value={query}
                 onChange={onChange}
                 placeholder="Search tasks by title..."
-                className="w-full border px-3 py-2 rounded"
+                className="input"
                 aria-label="Search tasks"
             />
         </div>

@@ -34,7 +34,7 @@ export default function EditTaskModal({ task, onClose }) {
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="w-full border px-3 py-2 rounded"
+                        className="input"
                     />
                 </div>
 
@@ -44,7 +44,7 @@ export default function EditTaskModal({ task, onClose }) {
                         <select
                             value={priority}
                             onChange={(e) => setPriority(e.target.value)}
-                            className="w-full border px-3 py-2 rounded"
+                            className="select"
                         >
                             {PRIORITIES.map((p) => (
                                 <option key={p.value} value={p.value}>
@@ -59,7 +59,7 @@ export default function EditTaskModal({ task, onClose }) {
                         <select
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
-                            className="w-full border px-3 py-2 rounded"
+                            className="select"
                         >
                             {CATEGORIES.map((c) => (
                                 <option key={c.value} value={c.value}>
@@ -71,16 +71,10 @@ export default function EditTaskModal({ task, onClose }) {
                 </div>
 
                 <div className="flex justify-end gap-2">
-                    <button
-                        onClick={onClose}
-                        className="px-4 py-2 rounded border"
-                    >
+                    <button onClick={onClose} className="btn-outline">
                         Cancel
                     </button>
-                    <button
-                        onClick={handleSave}
-                        className="px-4 py-2 rounded bg-blue-600 text-white"
-                    >
+                    <button onClick={handleSave} className="btn-primary">
                         Update
                     </button>
                 </div>
