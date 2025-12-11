@@ -4,6 +4,7 @@ import TaskList from "./components/TaskList.jsx";
 import FilterBar from "./components/FilterBar.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import CategoryFilter from "./components/CategoryFilter.jsx";
+import AutoSave from "./components/AutoSave.jsx";
 
 export default function App() {
     return (
@@ -14,6 +15,7 @@ export default function App() {
             <FilterBar />
             <CategoryFilter />
             <TaskList />
+            <AutoSave />
         </div>
     );
 }
