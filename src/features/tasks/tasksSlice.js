@@ -15,13 +15,16 @@ const tasksSlice = createSlice({
                 state.byId[task.id] = task;
                 state.allIds.push(task.id);
             },
-            prepare(title) {
+            prepare({ title, priority = "low" }) {
                 return {
                     payload: {
                         id: nanoid(),
                         title,
                         completed: false,
+                        priority, // 'low' | 'medium' | 'high' | 'urgent'
                         createdAt: new Date().toISOString(),
+                        updatedAt: null,
+                        categories: [],
                     },
                 };
             },
@@ -29,7 +32,11 @@ const tasksSlice = createSlice({
 
         toggleTask(state, action) {
             const id = action.payload;
-            state.byId[id].completed = !state.byId[id].completed;
+            const t = state.byId[id];
+            if (t) {
+                t.completed = !t.completed;
+                t.updatedAt = new Date().toISOString();
+            }
         },
 
         deleteTask(state, action) {
@@ -37,8 +44,18 @@ const tasksSlice = createSlice({
             delete state.byId[id];
             state.allIds = state.allIds.filter((i) => i !== id);
         },
+
+        updatePriority(state, action) {
+            const { id, priority } = action.payload;
+            const t = state.byId[id];
+            if (t) {
+                t.priority = priority;
+                t.updatedAt = new Date().toISOString();
+            }
+        },
     },
 });
 
-export const { addTask, toggleTask, deleteTask } = tasksSlice.actions;
+export const { addTask, toggleTask, deleteTask, updatePriority } =
+    tasksSlice.actions;
 export default tasksSlice.reducer;
