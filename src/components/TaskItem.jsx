@@ -53,16 +53,16 @@ export default function TaskItem({ task }) {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => setOpen(true)}
-                        className="text-sm px-2 py-1 border rounded"
+                        className="text-gray-700 text-lg px-2 py-1"
                     >
-                        Edit
+                        ✏️
                     </button>
 
                     <button
                         onClick={() => dispatch(deleteTask(task.id))}
-                        className="text-red-500 text-sm"
+                        className="text-red-600 text-lg  px-2 py-1"
                     >
-                        Delete
+                        🗑️
                     </button>
                 </div>
             </li>
