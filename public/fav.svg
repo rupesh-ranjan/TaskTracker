@@ -1,0 +1,19 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width="24"
+  height="24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <!-- Note / paper -->
+  <path d="M8 3h5l4 4v11a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+  <path d="M13 3v4h4" />
+
+  <!-- Pencil -->
+  <path d="M10 14.5 16.5 8a1.5 1.5 0 0 1 2.1 2.1L12.1 16.6 9 17.5z" />
+  <path d="M9 17.5 9.7 14.3" />
+</svg>
