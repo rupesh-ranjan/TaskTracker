@@ -2,12 +2,22 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleTask, deleteTask } from "../features/tasks/tasksSlice.js";
 import PriorityBadge from "./PriorityBadge.jsx";
-import { CATEGORIES } from "../constants/index.js";
+import { CATEGORIES, CATEGORY_STYLES } from "../constants/index.js";
 import EditTaskModal from "./EditTaskModal.jsx";
 
 export default function TaskItem({ task }) {
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
+
+    const catMeta = CATEGORY_STYLES[task.category] || {
+        bg: "bg-gray-100",
+        text: "text-gray-800",
+    };
+    const catLabel = (
+        CATEGORIES.find((c) => c.value === task.category) || {
+            label: "Personal",
+        }
+    ).label;
 
     return (
         <>
@@ -33,14 +43,10 @@ export default function TaskItem({ task }) {
 
                             <PriorityBadge priority={task.priority} />
 
-                            <span className="px-2 py-0.5 text-xs rounded-full bg-gray-100 text-gray-800">
-                                {
-                                    (
-                                        CATEGORIES.find(
-                                            (c) => c.value === task.category
-                                        ) || { label: "Personal" }
-                                    ).label
-                                }
+                            <span
+                                className={`px-2 py-0.5 text-xs rounded-full ${catMeta.bg} ${catMeta.text}`}
+                            >
+                                {catLabel}
                             </span>
                         </div>
 
@@ -60,7 +66,7 @@ export default function TaskItem({ task }) {
 
                     <button
                         onClick={() => dispatch(deleteTask(task.id))}
-                        className="text-red-600 text-lg  px-2 py-1"
+                        className="text-red-600 text-lg px-2 py-1"
                     >
                         🗑️
                     </button>
