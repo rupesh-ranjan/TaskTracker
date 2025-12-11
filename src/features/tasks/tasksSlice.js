@@ -4,6 +4,7 @@ const initialState = {
     byId: {},
     allIds: [],
     filter: "all",
+    searchQuery: "",
 };
 
 const tasksSlice = createSlice({
@@ -59,6 +60,10 @@ const tasksSlice = createSlice({
             state.filter = action.payload;
         },
 
+        setSearch(state, action) {
+            state.searchQuery = action.payload;
+        },
+
         loadTasks(state, action) {
             return action.payload;
         },
@@ -72,5 +77,6 @@ export const {
     updatePriority,
     setFilter,
     loadTasks,
+    setSearch,
 } = tasksSlice.actions;
 export default tasksSlice.reducer;

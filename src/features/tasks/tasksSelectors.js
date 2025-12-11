@@ -1,13 +1,19 @@
 export function selectVisibleTasks(state) {
-    const { byId, allIds, filter = "all" } = state.tasks;
+    const { byId, allIds, filter = "all", searchQuery = "" } = state.tasks;
 
-    const tasks = allIds.map((id) => byId[id] || null).filter(Boolean);
+    const q = (searchQuery || "").trim().toLowerCase();
+
+    let tasks = allIds.map((id) => byId[id]).filter(Boolean);
 
     if (filter === "active") {
-        return tasks.filter((t) => !t.completed);
+        tasks = tasks.filter((t) => !t.completed);
+    } else if (filter === "completed") {
+        tasks = tasks.filter((t) => t.completed);
     }
-    if (filter === "completed") {
-        return tasks.filter((t) => t.completed);
+
+    if (q.length > 0) {
+        tasks = tasks.filter((t) => (t.title || "").toLowerCase().includes(q));
     }
+
     return tasks;
 }
