@@ -6,6 +6,7 @@ const initialState = {
     filter: "all",
     searchQuery: "",
     categoryFilter: "all",
+    priorityFilter: "all",
 };
 
 const tasksSlice = createSlice({
@@ -67,6 +68,10 @@ const tasksSlice = createSlice({
             state.filter = action.payload;
         },
 
+        setPriorityFilter(state, action) {
+            state.priorityFilter = action.payload;
+        },
+
         setSearch(state, action) {
             state.searchQuery = action.payload;
         },
@@ -90,6 +95,7 @@ export const {
     setSearch,
     setCategoryFilter,
     updateTask,
+    setPriorityFilter,
 } = tasksSlice.actions;
 
 export default tasksSlice.reducer;

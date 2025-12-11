@@ -11,9 +11,7 @@ export default function CategoryFilter() {
             <button
                 onClick={() => dispatch(setCategoryFilter("all"))}
                 className={`px-3 py-1 rounded text-sm ${
-                    current === "all"
-                        ? "bg-blue-600 text-white"
-                        : "bg-white dark:bg-gray-800 border text-gray-700"
+                    current === "all" ? "bg-blue-600 text-white" : "btn-outline"
                 }`}
                 aria-pressed={current === "all"}
             >
@@ -22,10 +20,6 @@ export default function CategoryFilter() {
 
             {CATEGORIES.map((c) => {
                 const active = current === c.value;
-                const meta = CATEGORY_STYLES[c.value] || {
-                    bg: "bg-gray-100",
-                    dot: "bg-gray-500",
-                };
                 return (
                     <button
                         key={c.value}

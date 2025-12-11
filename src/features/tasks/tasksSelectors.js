@@ -5,6 +5,7 @@ export function selectVisibleTasks(state) {
         filter = "all",
         searchQuery = "",
         categoryFilter = "all",
+        priorityFilter = "all",
     } = state.tasks;
 
     const q = (searchQuery || "").trim().toLowerCase();
@@ -17,11 +18,26 @@ export function selectVisibleTasks(state) {
         tasks = tasks.filter((t) => t.completed);
     }
 
-    if (categoryFilter && categoryFilter !== "all") {
+    if (priorityFilter && priorityFilter !== "all") {
+        const pf = String(priorityFilter).trim().toLowerCase();
         tasks = tasks.filter(
             (t) =>
-                (t.category || t.categories?.[0] || "inbox") === categoryFilter
+                String(t.priority || "")
+                    .trim()
+                    .toLowerCase() === pf
         );
+    }
+
+    if (categoryFilter && categoryFilter !== "all") {
+        const cf = String(categoryFilter).trim().toLowerCase();
+        tasks = tasks.filter((t) => {
+            const cat = String(
+                t.category || (t.categories && t.categories[0]) || ""
+            )
+                .trim()
+                .toLowerCase();
+            return cat === cf;
+        });
     }
 
     if (q.length > 0) {
