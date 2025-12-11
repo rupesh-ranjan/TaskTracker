@@ -11,3 +11,9 @@ export const PRIORITY_STYLES = {
     high: "bg-orange-100 text-orange-800",
     urgent: "bg-red-100 text-red-800",
 };
+
+export const FILTERS = [
+    { value: "all", label: "All" },
+    { value: "active", label: "Active" },
+    { value: "completed", label: "Completed" },
+];

@@ -3,6 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const initialState = {
     byId: {},
     allIds: [],
+    filter: "all",
 };
 
 const tasksSlice = createSlice({
@@ -53,9 +54,23 @@ const tasksSlice = createSlice({
                 t.updatedAt = new Date().toISOString();
             }
         },
+
+        setFilter(state, action) {
+            state.filter = action.payload;
+        },
+
+        loadTasks(state, action) {
+            return action.payload;
+        },
     },
 });
 
-export const { addTask, toggleTask, deleteTask, updatePriority } =
-    tasksSlice.actions;
+export const {
+    addTask,
+    toggleTask,
+    deleteTask,
+    updatePriority,
+    setFilter,
+    loadTasks,
+} = tasksSlice.actions;
 export default tasksSlice.reducer;
