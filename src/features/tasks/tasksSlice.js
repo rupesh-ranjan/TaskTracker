@@ -49,11 +49,16 @@ const tasksSlice = createSlice({
             state.allIds = state.allIds.filter((i) => i !== id);
         },
 
-        updatePriority(state, action) {
-            const { id, priority } = action.payload;
+        updateTask(state, action) {
+            const { id, title, priority, category } = action.payload;
             const t = state.byId[id];
             if (t) {
-                t.priority = priority;
+                if (typeof title === "string") t.title = title;
+                if (typeof priority === "string") t.priority = priority;
+                if (typeof category === "string") {
+                    t.category = category;
+                    t.categories = [category];
+                }
                 t.updatedAt = new Date().toISOString();
             }
         },
@@ -70,16 +75,6 @@ const tasksSlice = createSlice({
             state.categoryFilter = action.payload;
         },
 
-        updateCategory(state, action) {
-            const { id, category } = action.payload;
-            const t = state.byId[id];
-            if (t) {
-                t.category = category;
-                t.categories = [category];
-                t.updatedAt = new Date().toISOString();
-            }
-        },
-
         loadTasks(state, action) {
             return action.payload;
         },
@@ -90,11 +85,11 @@ export const {
     addTask,
     toggleTask,
     deleteTask,
-    updatePriority,
     setFilter,
     loadTasks,
     setSearch,
-    updateCategory,
     setCategoryFilter,
+    updateTask,
 } = tasksSlice.actions;
+
 export default tasksSlice.reducer;
