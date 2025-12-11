@@ -15,7 +15,7 @@ export default function SearchBar() {
                 type="search"
                 value={query}
                 onChange={onChange}
-                placeholder="Search tasks by title..."
+                placeholder="Search tasks..."
                 className="input"
                 aria-label="Search tasks"
             />
