@@ -27,11 +27,13 @@ body {
         @apply bg-blue-600 hover:bg-blue-700 text-white rounded px-4 py-2;
     }
     .btn-outline {
-        @apply bg-white border text-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 rounded px-3 py-1;
+        @apply bg-white border text-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 rounded px-4 py-2;
     }
+
     .modal-panel {
-        @apply relative bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-lg w-full max-w-lg mx-4 p-4;
+        @apply relative bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-lg w-full max-w-md mx-4 p-4;
     }
+
     .chip {
         @apply px-2 py-0.5 text-xs rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-100;
     }

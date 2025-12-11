@@ -10,51 +10,62 @@ export default function AddTask() {
     const [category, setCategory] = useState("personal");
 
     const handleAdd = () => {
-        if (!title.trim()) return;
-        dispatch(addTask({ title: title.trim(), priority, category }));
+        const t = title.trim();
+        if (!t) return;
+        dispatch(addTask({ title: t, priority, category }));
         setTitle("");
     };
 
     return (
-        <div className="flex gap-2 mb-4 items-center">
-            <input
-                type="text"
-                placeholder="Enter task..."
-                className="input"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-            />
+        <div className="mb-4">
+            {/* Row 1: full-width input */}
+            <div className="mb-2">
+                <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Enter task..."
+                    className="input"
+                    aria-label="Task title"
+                />
+            </div>
 
-            <select
-                value={priority}
-                onChange={(e) => setPriority(e.target.value)}
-                className="select"
-                aria-label="Select priority"
-            >
-                {PRIORITIES.map((p) => (
-                    <option key={p.value} value={p.value}>
-                        {p.label}
-                    </option>
-                ))}
-            </select>
+            {/* Row 2: priority, category, add button */}
+            <div className="flex gap-2 items-center">
+                <select
+                    value={priority}
+                    onChange={(e) => setPriority(e.target.value)}
+                    className="select flex-1"
+                    aria-label="Priority"
+                >
+                    {PRIORITIES.map((p) => (
+                        <option key={p.value} value={p.value}>
+                            {p.label}
+                        </option>
+                    ))}
+                </select>
 
-            <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="select"
-                aria-label="Select category"
-            >
-                {CATEGORIES.map((c) => (
-                    <option key={c.value} value={c.value}>
-                        {c.label}
-                    </option>
-                ))}
-            </select>
+                <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    className="select flex-1"
+                    aria-label="Category"
+                >
+                    {CATEGORIES.map((c) => (
+                        <option key={c.value} value={c.value}>
+                            {c.label}
+                        </option>
+                    ))}
+                </select>
 
-            <button onClick={handleAdd} className="btn-primary">
-                Add
-            </button>
+                <button
+                    onClick={handleAdd}
+                    className="btn-primary"
+                    aria-label="Add task"
+                >
+                    Add
+                </button>
+            </div>
         </div>
     );
 }

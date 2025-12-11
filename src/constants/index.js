@@ -22,7 +22,7 @@ export const CATEGORIES = [
     { value: "work", label: "Work" },
     { value: "personal", label: "Personal" },
     { value: "learning", label: "Learning" },
-    { value: "meetings", label: "Meetings" },
+    // { value: "meetings", label: "Meetings" },
 ];
 
 export const CATEGORY_STYLES = {

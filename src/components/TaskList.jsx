@@ -6,7 +6,9 @@ export default function TaskList() {
     const tasks = useSelector((state) => selectVisibleTasks(state));
 
     if (!tasks.length) {
-        return <div className="text-sm text-gray-500">No tasks to show.</div>;
+        return (
+            <div className="text-sm text-gray-500 mt-4">No tasks to show.</div>
+        );
     }
 
     return (
